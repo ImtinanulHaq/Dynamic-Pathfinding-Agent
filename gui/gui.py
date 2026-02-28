@@ -147,10 +147,11 @@ class GridGUI:
         self.root.after(150, self.animate_step, path, idx + 1)
 
     def spawn_random_obstacle(self, path, idx):
+        future_path = set(path[idx:])
         for _ in range(10):
             r = random.randint(0, self.grid.rows - 1)
             c = random.randint(0, self.grid.cols - 1)
-            if self.grid.grid[r][c] == 0 and (r, c) not in path[idx:]:
+            if self.grid.grid[r][c] == 0 and (r, c) not in future_path:
                 self.grid.add_obstacle(r, c)
                 break
 

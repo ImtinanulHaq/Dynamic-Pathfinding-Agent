@@ -8,10 +8,18 @@ class Grid:
         self.goal = None
 
     def set_start(self, row, col):
+        if self.start is not None:
+            old_r, old_c = self.start
+            if self.grid[old_r][old_c] == 2:
+                self.grid[old_r][old_c] = 0
         self.start = (row, col)
         self.grid[row][col] = 2
 
     def set_goal(self, row, col):
+        if self.goal is not None:
+            old_r, old_c = self.goal
+            if self.grid[old_r][old_c] == 3:
+                self.grid[old_r][old_c] = 0
         self.goal = (row, col)
         self.grid[row][col] = 3
 
